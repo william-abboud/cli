@@ -5,11 +5,11 @@
 
   <Import Project="Installer.DEB.targets" />
 
+  <!-- Re-enable "TestSdkDeb" when the following issue is resolved: https://github.com/dotnet/cli/issues/9672 -->
   <Target Name="GenerateDebs"
           DependsOnTargets="SetupDebProps;
                             TestDebuild;
-                            BuildSdkDeb;
-                            TestSdkDeb;"
+                            BuildSdkDeb"
           Condition=" '$(IsDebianBaseDistro)' == 'True' "
           Outputs="@(GeneratedInstallers)"/>
 
